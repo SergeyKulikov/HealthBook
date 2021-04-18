@@ -73,25 +73,25 @@ public class MemberActivity extends AppCompatActivity implements Settings {
     private void createDefaultPropertyList() {
 
         memberPropertyAdapter.getPropertyList().addItem(
-                groups[0], new Property("guid", "GUID", AttributeType.GUID)
+                groups[0], new Property("guid", "GUID", Settings.GUID)
         );
         memberPropertyAdapter.getPropertyList().addItem(
-                groups[0], new Property("last_name", "Фамилия", AttributeType.Text)
+                groups[0], new Property("last_name", "Фамилия", Settings.Text)
         );
         memberPropertyAdapter.getPropertyList().addItem(
-                groups[0], new Property("first_name", "Имя", AttributeType.Text)
+                groups[0], new Property("first_name", "Имя", Settings.Text)
         );
         memberPropertyAdapter.getPropertyList().addItem(
-                groups[0], new Property("middle_name", "Отчество", AttributeType.Text)
+                groups[0], new Property("middle_name", "Отчество", Settings.Text)
         );
         memberPropertyAdapter.getPropertyList().addItem(
-                groups[0], new Property("medicine_number", "Отчество", AttributeType.Text)
+                groups[0], new Property("medicine_number", "Отчество", Settings.Text)
         );
         memberPropertyAdapter.getPropertyList().addItem(
-                groups[0], new Property("berth_day", "Дата рождения", AttributeType.Date)
+                groups[0], new Property("berth_day", "Дата рождения", Settings.Date)
         );
         memberPropertyAdapter.getPropertyList().addItem(
-                groups[0], new Property("gender", "Пол", AttributeType.SingleSelect)
+                groups[0], new Property("gender", "Пол", Settings.SingleSelect)
                 .addParameter("Муж").addParameter("Жен")
         );
     }

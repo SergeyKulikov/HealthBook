@@ -20,11 +20,11 @@ public class Property {
     private String caption;
     private PropertyButton button_action;
     private String default_value;
-    private AttributeType type;
+    private @Settings.AttributeTypes int type;
 
     private final Vector<Object> parameters = new Vector<>();
 
-    public Property(String id, String caption, String default_value, String value, String hint, AttributeType type) {
+    public Property(String id, String caption, String default_value, String value, String hint, @Settings.AttributeTypes int type) {
         super();
         this.id = id;
         this.caption = caption;
@@ -35,7 +35,7 @@ public class Property {
         this.type = type;
     }
 
-    public Property(String id, String caption, AttributeType type) {
+    public Property(String id, String caption, @Settings.AttributeTypes int type) {
         this.id = id;
         this.caption = caption;
         this.default_value = null;
@@ -93,11 +93,11 @@ public class Property {
         this.button_action = button_action;
     }
 
-    public AttributeType getType() {
+    public @Settings.AttributeTypes int getType() {
         return type;
     }
 
-    public void setType(AttributeType type) {
+    public void setType(@Settings.AttributeTypes int type) {
         this.type = type;
     }
 

@@ -15,18 +15,18 @@ public class AttributeList {
     }
 
     private AttributeList() {
-        attributes.add(new Attribute("temperature", "Температура", AttributeType.Double));
-        attributes.add(new Attribute("health", "Сомочувствие", AttributeType.MultilineText));
-        attributes.add(new Attribute("allergy", "Аллергия (описание)", AttributeType.MultilineText));
-        attributes.add(new Attribute("diarrhea", "Понос (описание)", AttributeType.MultilineText));
-        attributes.add(new Attribute("constipation", "Запор (описание)", AttributeType.MultilineText));
-        attributes.add(new Attribute("feces", "Кал", AttributeType.MultilineText));
-        attributes.add(new Attribute("urine", "Моча", AttributeType.MultilineText));
-        attributes.add(new Attribute("injury", "Травма", AttributeType.MultilineText));
-        attributes.add(new Attribute("cut", "Порез", AttributeType.MultilineText));
-        attributes.add(new Attribute("burn", "Ожег", AttributeType.MultilineText));
+        attributes.add(new Attribute("temperature", "Температура", Settings.Double));
+        attributes.add(new Attribute("health", "Сомочувствие", Settings.MultilineText));
+        attributes.add(new Attribute("allergy", "Аллергия (описание)", Settings.MultilineText));
+        attributes.add(new Attribute("diarrhea", "Понос (описание)", Settings.MultilineText));
+        attributes.add(new Attribute("constipation", "Запор (описание)", Settings.MultilineText));
+        attributes.add(new Attribute("feces", "Кал", Settings.MultilineText));
+        attributes.add(new Attribute("urine", "Моча", Settings.MultilineText));
+        attributes.add(new Attribute("injury", "Травма", Settings.MultilineText));
+        attributes.add(new Attribute("cut", "Порез", Settings.MultilineText));
+        attributes.add(new Attribute("burn", "Ожег", Settings.MultilineText));
         attributes.add(new Attribute("taking medicine", "Прием лекаства (название)",
-                AttributeType.Text, "Доза", AttributeType.Double));
+                Settings.Text, "Доза", Settings.Double));
     }
 
 }

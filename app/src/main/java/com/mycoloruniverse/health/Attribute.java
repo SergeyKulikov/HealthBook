@@ -18,12 +18,12 @@ public class Attribute {
     private String guid;
     @NonNull
     private String name1;  // Значение которое вводится как пояснение, например "Аспирин"
-    private AttributeType type1;
+    private @Settings.AttributeTypes int type1;
 
     private String name2;  // Дополнительное значение, например "50 мг"
-    private AttributeType type2;
+    private @Settings.AttributeTypes int type2;
 
-    public Attribute(String guid, String name1, AttributeType type1, String name2, AttributeType type2) {
+    public Attribute(String guid, String name1, @Settings.AttributeTypes int type1, String name2, @Settings.AttributeTypes int type2) {
         this.guid = guid;
         this.name1 = name1;
         this.name2 = name2;
@@ -32,12 +32,12 @@ public class Attribute {
     }
 
     @Ignore
-    public Attribute(String guid, String name1, AttributeType type1) {
+    public Attribute(String guid, String name1, @Settings.AttributeTypes int type1) {
         this.guid = guid;
         this.name1 = name1;
         this.name2 = null;
         this.type1 = type1;
-        this.type2 = AttributeType.None;
+        this.type2 = Settings.None;
     }
 
     public String getGuid() {
@@ -64,19 +64,19 @@ public class Attribute {
         this.name2 = name2;
     }
 
-    public AttributeType getType1() {
+    public @Settings.AttributeTypes int getType1() {
         return type1;
     }
 
-    public void setType1(AttributeType type1) {
+    public void setType1(@Settings.AttributeTypes int type1) {
         this.type1 = type1;
     }
 
-    public AttributeType getType2() {
+    public @Settings.AttributeTypes int getType2() {
         return type2;
     }
 
-    public void setType2(AttributeType type2) {
+    public void setType2(@Settings.AttributeTypes int type2) {
         this.type2 = type2;
     }
 }
