@@ -1,4 +1,4 @@
-package com.mycoloruniverse.health;
+package com.mycoloruniverse.health.model;
 
 public class RoomJsonBase {
     private String property_json;

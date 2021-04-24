@@ -1,4 +1,4 @@
-package com.mycoloruniverse.health;
+package com.mycoloruniverse.health.db;
 
 import android.app.Application;
 

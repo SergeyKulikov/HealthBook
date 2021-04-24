@@ -1,10 +1,14 @@
-package com.mycoloruniverse.health;
+package com.mycoloruniverse.health.view;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.mycoloruniverse.health.db.App;
+import com.mycoloruniverse.health.db.AppDao;
+import com.mycoloruniverse.health.R;
+import com.mycoloruniverse.health.model.VisualInterface;
+import com.mycoloruniverse.health.presenter.VisualInterfaceList;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -27,6 +31,7 @@ public class MemberListActivity extends AppCompatActivity {
             R.layout.member_item_layout);
     private RecyclerView rvMemberList;
     private Disposable disposableLoadMembers;
+    private final VisualInterface visualInterface = VisualInterfaceList.getInstance().get("member");
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +62,17 @@ public class MemberListActivity extends AppCompatActivity {
         rvMemberList.setOnCreateContextMenuListener(this); // необходимо для контекстного меню для RecycledView
         rvMemberList.addItemDecoration(dividerItemDecoration);
 
+        /*
         disposableLoadMembers = appDao.rx_loadMemberList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(memberListAdapter::setList);
+                .subscribe(
+                        list -> {
+                            memberListAdapter.setList(list);
+                        }
+                );
+
+         */
     }
 
     @Override

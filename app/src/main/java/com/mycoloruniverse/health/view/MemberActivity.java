@@ -1,4 +1,4 @@
-package com.mycoloruniverse.health;
+package com.mycoloruniverse.health.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -9,7 +9,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import org.json.JSONException;
+import com.mycoloruniverse.health.db.App;
+import com.mycoloruniverse.health.db.AppDao;
+import com.mycoloruniverse.health.R;
+import com.mycoloruniverse.health.Settings;
+import com.mycoloruniverse.health.model.Member;
+import com.mycoloruniverse.health.model.VisualEventBased;
 
 import java.util.UUID;
 
@@ -29,6 +34,7 @@ public class MemberActivity extends AppCompatActivity implements Settings {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member);
 
+
         createDefaultPropertyList(); // Создали фиксированные поля для данного типа документа
 
         rvDetails = findViewById(R.id.rvDetails);
@@ -42,7 +48,6 @@ public class MemberActivity extends AppCompatActivity implements Settings {
         rvDetails.setOnCreateContextMenuListener(this); // необходимо для контекстного меню для RecycledView
         rvDetails.addItemDecoration(dividerItemDecoration);
 
-
         Intent intent = getIntent();
         if (intent.hasExtra(APP_ACTION)) {
             switch (intent.getIntExtra(APP_ACTION, 0)) {
@@ -51,7 +56,9 @@ public class MemberActivity extends AppCompatActivity implements Settings {
                             UUID.randomUUID().toString(), ""
                     );
                     memberPropertyAdapter.setActiveFolder(groups[0]);
-                    // memberPropertyAdapter.setPropertyMap(currentMember.getPropertyMap());
+                    memberPropertyAdapter.notifyDataSetChanged();
+
+                    // memberPropertyAdapter.setPropertyMap(memberPropertyAda);
                     break;
                 case ID_ACTION_EDIT_MEMBER:
                     appDao.rx_loadMemberByGUID(intent.getStringExtra(MEMBER_ID))
@@ -59,8 +66,8 @@ public class MemberActivity extends AppCompatActivity implements Settings {
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(member -> {
                                 currentMember = member;
-
                                 memberPropertyAdapter.setActiveFolder(groups[0]);
+                                memberPropertyAdapter.notifyDataSetChanged();
                                 // memberPropertyAdapter.setPropertyMap(currentMember.getPropertyMap());
                             });
                     break;
@@ -72,26 +79,30 @@ public class MemberActivity extends AppCompatActivity implements Settings {
 
     private void createDefaultPropertyList() {
 
-        memberPropertyAdapter.getPropertyList().addItem(
-                groups[0], new Property("guid", "GUID", Settings.GUID)
+        //addVisualParameter
+
+        VisualEventBased visualEventBased = new VisualEventBased("guid", "GUID", Settings.GUID);
+        visualEventBased.addVisualParameter("autogen", true);
+        visualEventBased.addVisualParameter("hidden", true);
+        visualEventBased.addVisualParameter("enable", false);
+
+        memberPropertyAdapter.getPropertyMap().addItem(
+                groups[0], visualEventBased
         );
-        memberPropertyAdapter.getPropertyList().addItem(
-                groups[0], new Property("last_name", "Фамилия", Settings.Text)
+        memberPropertyAdapter.getPropertyMap().addItem(
+                groups[0], new VisualEventBased("last_name", "Фамилия", Settings.Text)
         );
-        memberPropertyAdapter.getPropertyList().addItem(
-                groups[0], new Property("first_name", "Имя", Settings.Text)
+        memberPropertyAdapter.getPropertyMap().addItem(
+                groups[0], new VisualEventBased("first_name", "Имя", Settings.Text)
         );
-        memberPropertyAdapter.getPropertyList().addItem(
-                groups[0], new Property("middle_name", "Отчество", Settings.Text)
+        memberPropertyAdapter.getPropertyMap().addItem(
+                groups[0], new VisualEventBased("middle_name", "Отчество", Settings.Text)
         );
-        memberPropertyAdapter.getPropertyList().addItem(
-                groups[0], new Property("medicine_number", "Отчество", Settings.Text)
+        memberPropertyAdapter.getPropertyMap().addItem(
+                groups[0], new VisualEventBased("berth_day", "Дата рождения", Settings.Date)
         );
-        memberPropertyAdapter.getPropertyList().addItem(
-                groups[0], new Property("berth_day", "Дата рождения", Settings.Date)
-        );
-        memberPropertyAdapter.getPropertyList().addItem(
-                groups[0], new Property("gender", "Пол", Settings.SingleSelect)
+        memberPropertyAdapter.getPropertyMap().addItem(
+                groups[0], new VisualEventBased("gender", "Пол", Settings.SingleSelect)
                 .addParameter("Муж").addParameter("Жен")
         );
     }

@@ -1,4 +1,6 @@
-package com.mycoloruniverse.health;
+package com.mycoloruniverse.health.model;
+
+import com.mycoloruniverse.health.EPropertyButton;
 
 import java.util.HashMap;
 import java.util.Map;

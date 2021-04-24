@@ -13,7 +13,7 @@ public interface Settings {
 
 
     @IntDef({None, GUID, Integer, Long, Double, Date, Time, DateTime,
-            Text, MultilineText, SingleSelect, Memo})
+            Text, MultilineText, SingleSelect, Memo, Decimal})
     @interface AttributeTypes { }
 
     int None = 0;
@@ -28,4 +28,5 @@ public interface Settings {
     int MultilineText = 9;
     int SingleSelect = 10;
     int Memo = 11;
+    int Decimal = 12;
 }

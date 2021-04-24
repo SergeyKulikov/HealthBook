@@ -1,4 +1,6 @@
-package com.mycoloruniverse.health;
+package com.mycoloruniverse.health.model;
+
+import com.mycoloruniverse.health.Settings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ public class AttributeList {
     }
 
     private AttributeList() {
+        /*
         attributes.add(new Attribute("temperature", "Температура", Settings.Double));
         attributes.add(new Attribute("health", "Сомочувствие", Settings.MultilineText));
         attributes.add(new Attribute("allergy", "Аллергия (описание)", Settings.MultilineText));
@@ -27,6 +30,8 @@ public class AttributeList {
         attributes.add(new Attribute("burn", "Ожег", Settings.MultilineText));
         attributes.add(new Attribute("taking medicine", "Прием лекаства (название)",
                 Settings.Text, "Доза", Settings.Double));
+
+         */
     }
 
 }

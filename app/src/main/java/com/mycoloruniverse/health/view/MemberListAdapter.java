@@ -1,4 +1,4 @@
-package com.mycoloruniverse.health;
+package com.mycoloruniverse.health.view;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+
+import com.mycoloruniverse.health.R;
+import com.mycoloruniverse.health.model.Member;
 
 import java.util.ArrayList;
 import java.util.List;

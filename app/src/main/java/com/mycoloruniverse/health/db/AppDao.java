@@ -1,10 +1,13 @@
-package com.mycoloruniverse.health;
+package com.mycoloruniverse.health.db;
 
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+
+import com.mycoloruniverse.health.model.EventDataBased;
+import com.mycoloruniverse.health.model.Member;
 
 import java.util.List;
 
@@ -23,4 +26,6 @@ public interface AppDao {
 
     @Query("SELECT * FROM Member WHERE guid = :guid")
     Maybe<Member> rx_loadMemberByGUID(String guid);
+
+
 }

@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:paddingVertical="4dp"
-    android:id="@+id/cl_property"
     android:layout_height="wrap_content">
 
     <TextView
@@ -31,7 +30,6 @@
         android:id="@+id/btnPropertySelect"
         android:layout_width="wrap_content"
         android:layout_height="32dp"
-        android:elevation="@dimen/space_8"
         style="@style/ButtonSelectMore"
         android:src="@drawable/ic_baseline_more_vert_24"
         app:layout_constraintBottom_toBottomOf="@+id/etPropertyValue"
